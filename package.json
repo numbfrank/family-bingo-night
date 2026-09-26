@@ -1,0 +1,14 @@
+{
+  "name": "family-bingo-night",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "A cheerful, self-contained 90-ball bingo caller for family game nights.",
+  "license": "MIT",
+  "scripts": {
+    "test": "node --test"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en-GB">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#13213c" />
+    <meta
+      name="description"
+      content="A cheerful 90-ball caller for your family bingo night."
+    />
+    <title>Family Bingo Night</title>
+    <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="/styles.css" />
+    <script type="module" src="/src/app.js"></script>
+  </head>
+  <body>
+    <div class="page-confetti" aria-hidden="true"></div>
+
+    <header class="site-header">
+      <div class="brand">
+        <span class="brand-mark" aria-hidden="true">
+          <span>8</span>
+        </span>
+        <span class="brand-copy">
+          <strong>Family Bingo</strong>
+          <span>Night</span>
+        </span>
+      </div>
+
+      <div class="header-actions">
+        <div class="game-count">
+          <span class="game-count-number" id="headerCalledCount">0</span>
+          <span class="game-count-copy">of 90<br />called</span>
+        </div>
+        <button class="reset-button" id="resetButton" type="button">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M4.6 9A8 8 0 1 1 4 14.1M4.6 9V4.5M4.6 9h4.5" />
+          </svg>
+          Reset game
+        </button>
+      </div>
+    </header>
+
+    <main class="app-shell">
+      <section class="caller-card" aria-labelledby="callerTitle">
+        <div class="card-sparkles" aria-hidden="true">✦</div>
+        <div class="caller-heading">
+          <span class="live-dot" aria-hidden="true"></span>
+          <span id="callerTitle">Live caller</span>
+        </div>
+
+        <p class="current-label" id="currentLabel">The caller is ready</p>
+
+        <div class="ball-stage">
+          <div class="ball-halo" aria-hidden="true"></div>
+          <div class="number-ball is-ready" id="numberBall">
+            <span id="currentNumber">?</span>
+          </div>
+          <span class="ball-star ball-star-one" aria-hidden="true">✦</span>
+          <span class="ball-star ball-star-two" aria-hidden="true">✦</span>
+        </div>
+
+        <h1 class="call-name" id="currentCall">Ready to play?</h1>
+        <p class="call-helper" id="callHelper">
+          Press the button and let the bingo begin.
+        </p>
+
+        <button class="call-button" id="callButton" type="button">
+          <span id="callButtonLabel">Call first number</span>
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="m9 6 6 6-6 6" />
+          </svg>
+        </button>
+
+        <div class="progress-wrap">
+          <div class="progress-copy">
+            <label for="gameProgress">Game progress</label>
+            <strong id="progressLabel">0 / 90</strong>
+          </div>
+          <progress id="gameProgress" max="90" value="0">0 of 90</progress>
+        </div>
+      </section>
+
+      <aside class="history-card" aria-labelledby="historyTitle">
+        <div class="panel-heading">
+          <div>
+            <p class="panel-kicker">Newest first</p>
+            <h2 id="historyTitle">Calls so far</h2>
+          </div>
+          <span class="history-count" id="historyCount" aria-hidden="true">0</span>
+        </div>
+
+        <div class="empty-history" id="emptyHistory">
+          <div class="empty-balls" aria-hidden="true">
+            <span>?</span><span>?</span><span>?</span>
+          </div>
+          <strong>No numbers called yet</strong>
+          <p>Your call history will appear here.</p>
+        </div>
+        <ol
+          class="history-list"
+          id="historyList"
+          tabindex="0"
+          aria-label="Called numbers, newest first"
+        ></ol>
+      </aside>
+
+      <section class="board-card" aria-labelledby="boardTitle">
+        <div class="board-heading">
+          <div>
+            <p class="panel-kicker">Keep track at a glance</p>
+            <h2 id="boardTitle">Number board</h2>
+          </div>
+          <div class="board-legend" aria-hidden="true">
+            <span><i class="legend-dot called"></i> Called</span>
+            <span><i class="legend-dot waiting"></i> Waiting</span>
+          </div>
+        </div>
+        <div class="number-board" id="numberBoard" role="list" aria-label="Numbers 1 to 90"></div>
+      </section>
+    </main>
+
+    <footer>
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M18.4 5.6l-2.1 2.1M7.7 16.3l-2.1 2.1" />
+      </svg>
+      <span id="saveStatus">Your game is saved automatically on this device</span>
+    </footer>
+
+    <div class="sr-only" id="callAnnouncement" aria-live="polite" aria-atomic="true"></div>
+
+    <dialog
+      class="reset-dialog"
+      id="resetDialog"
+      aria-labelledby="resetTitle"
+      aria-describedby="resetDescription"
+    >
+      <form method="dialog">
+        <div class="dialog-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24">
+            <path d="M4.6 9A8 8 0 1 1 4 14.1M4.6 9V4.5M4.6 9h4.5" />
+          </svg>
+        </div>
+        <h2 id="resetTitle">Start a new game?</h2>
+        <p id="resetDescription">This will clear the call history and shuffle all 90 numbers.</p>
+        <div class="dialog-actions">
+          <button class="dialog-cancel" value="cancel" autofocus>Keep playing</button>
+          <button class="dialog-confirm" value="confirm">Reset game</button>
+        </div>
+      </form>
+    </dialog>
+  </body>
+</html>
